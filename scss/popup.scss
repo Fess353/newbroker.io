@@ -1,0 +1,109 @@
+@import "vars"; // Импорт переменных
+@import "fonts"; // Шрифты
+@import "mixin"; // миксины
+
+.page__popup {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.popup {
+	opacity: 0;
+	height: 150px;
+	width: 300px;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	box-sizing: border-box;
+	transition: 300ms;
+
+	@media (min-width: 768px) {
+		height: 220px;
+		width: 450px;
+	}
+
+	&_visible {
+		z-index: 1;
+		opacity: 1;
+	}
+
+	&__close-btn {
+		position: absolute;
+		top: -18px;
+		right: -18px;
+		outline: none;
+		border: none;
+		background: transparent;
+	}
+
+	&__text {
+		@include font-druk;
+		margin-top: 30px;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 28px;
+		line-height: 100%;
+		color: #3c3c3c;
+
+		@media (min-width: 768px) {
+			font-size: 34px;
+			margin-top: 65px;
+		}
+	}
+
+	&__icon {
+		&-decline {
+			position: relative;
+			bottom: 30px;
+		}
+	}
+
+	&__line {
+		position: absolute;
+		left: 42%;
+		top: 70%;
+		width: 50%;
+	}
+
+	&__inner-cont {
+		clip-path: polygon(0% 4%, 100% 0%, 98% 94%, 3% 100%);
+		background-color: #ffffff;
+		height: 100%;
+	}
+	&__wrapper {
+		height: 150px;
+		width: 300px;
+		padding: 10px;
+		text-align: center;
+		box-sizing: border-box;
+		position: relative;
+
+		@media (min-width: 768px) {
+			height: 220px;
+			width: 450px;
+		}
+	}
+
+	&__success {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&_img {
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+	&__decline {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

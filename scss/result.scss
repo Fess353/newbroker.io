@@ -1,0 +1,85 @@
+@import "vars"; // Импорт переменных всегда первый
+@import "fonts"; // Шрифты
+@import "ui"; // Основные элементы
+@import "mixin"; // миксины
+
+.page__result {
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	top: 50px;
+	position: relative;
+
+	&-title {
+	}
+
+	&-type {
+		@include flex;
+		height: 90px;
+		min-height: 90px;
+		opacity: 1;
+		@media (min-width: 768px) {
+			height: 100px;
+		}
+	}
+
+	&-type-scale-animation {
+		animation-name: scaleResultType;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-delay: 1200ms;
+		animation-duration: 300ms;
+	}
+
+	&-cat {
+		height: 5vh;
+		margin-top: 10px;
+	}
+	&-cat-scale-animation {
+		animation-name: scaleResultCat;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-delay: 1200ms;
+		animation-duration: 300ms;
+	}
+
+	&-text {
+		@include font-inter;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 104%;
+		color: #ffffff;
+		width: 300px;
+		text-align: left;
+		opacity: 0;
+
+		@media (min-width: 768px) {
+			width: 473px;
+			font-size: 18px;
+		}
+		@media (min-width: 1440px) {
+			width: 587px;
+		}
+	}
+
+	&-link {
+		color: #ffffff;
+	}
+	
+	&-text-appear-animation {
+		animation-name: showResultText;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-delay: 1300ms;
+		animation-duration: 300ms;
+	}
+}

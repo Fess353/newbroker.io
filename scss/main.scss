@@ -1,0 +1,448 @@
+@import "vars"; // Импорт переменных всегда первый
+@import "fonts"; // Шрифты
+@import "ui"; // Основные элементы
+@import "mixin"; // миксины
+@import "animations"; //анимации-keyframes
+@import "buttons"; //кнопки
+@import "questions"; //вопросы
+@import "answers"; //ответы
+@import "final block"; //финальный блок поделиться
+@import "rotate page"; //повернутая страница
+@import "result"; //страница с результатами
+@import "popup"; //попап
+
+.main {
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+
+	&__page {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		left: 0;
+		top: 0;
+	}
+}
+
+.page {
+	background-color: $bank1;
+	overflow: hidden;
+	display: none;
+
+	&1 {
+		display: block;
+		overflow-y: auto;
+		background-color: unset;
+
+		@media (min-width: 768px) {
+			overflow-y: hidden;
+		}
+	}
+
+	&7 {
+		display: none;
+		justify-content: center;
+		flex-direction: column;
+		align-content: center;
+	}
+
+	&__title {
+		margin-top: 40px;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+
+		@media (min-width: 768px) {
+			margin-top: 121px;
+		}
+
+		@media (min-width: 1440px) {
+			margin-top: 44px;
+		}
+	}
+
+	// центральный кот
+	&__cat-center {
+		position: absolute;
+		bottom: 0;
+		left: 50vw;
+		transform: translateX(-50%);
+
+		width: 370px;
+		height: 320px;
+		overflow: hidden;
+
+		@media (min-width: 768px) {
+			width: 720px;
+			height: 544px;
+		}
+		@media (min-width: 1440px) {
+			width: 636px;
+			height: 480px;
+		}
+	}
+
+	&__cat-center-wrapper {
+		position: absolute;
+		bottom: 0;
+		left: 20%;
+		transform: translateY(100%);
+
+		@media (max-width: 767px) {
+			bottom: 20px;
+		}
+	}
+
+	&__cat-center-appear-animation {
+		animation-name: centerCatAppear1, centerCatAppear2;
+		animation-delay: 600ms, 1500ms;
+		animation-fill-mode: forwards, forwards;
+		animation-duration: 300ms, 600ms;
+		animation-timing-function: linear, ease-in-out;
+	}
+
+	&__cat-center-disappear-animation {
+		animation-name: hideCenterCat;
+		animation-fill-mode: forwards;
+		animation-duration: 400ms;
+	}
+
+	&__cat-center-picture {
+		position: relative;
+	}
+
+	// правый кот
+	&__cat-right {
+		position: absolute;
+		bottom: -5px;
+		right: -5px;
+		transform: translateX(100%);
+	}
+
+	&__cat-right-appear-animation {
+		animation-name: showRightCat;
+		animation-fill-mode: forwards;
+		animation-delay: 600ms;
+		animation-duration: 400ms;
+	}
+
+	&__cat-right-disappear-animation {
+		animation-name: hideRightCat;
+		animation-fill-mode: forwards;
+		animation-delay: 0;
+		animation-duration: 600ms;
+	}
+
+	// левый кот
+	&__cat-left {
+		position: absolute;
+		bottom: -5px;
+		left: -5px;
+		transform: translateX(-100%);
+	}
+
+	&__cat-left-appear-animation {
+		animation-name: showLeftCat;
+		animation-fill-mode: forwards;
+		animation-delay: 600ms;
+		animation-duration: 400ms;
+	}
+
+	&__cat-left-disappear-animation {
+		animation-name: hideLeftCat;
+		animation-fill-mode: forwards;
+		animation-delay: 0;
+		animation-duration: 600ms;
+	}
+
+	&__cash {
+		position: absolute;
+		top: -35px;
+		left: -60px;
+		opacity: 0;
+		transform: rotate(-45deg);
+
+		@media (min-width: 768px) {
+			top: -70px;
+			left: -120px;
+		}
+		@media (min-width: 1440px) {
+			top: -70px;
+			left: -110px;
+		}
+	}
+
+	&__cash-appear-animation {
+		animation-name: cashAppear;
+		animation-delay: 1500ms;
+		animation-fill-mode: forwards;
+		animation-duration: 600ms;
+		animation-timing-function: ease-in-out;
+		transform-origin: 100% 100%;
+	}
+
+	// футер
+	&__footer {
+		@include flex;
+		background-color: $bank1;
+		height: 53px;
+		width: 100vw;
+		position: absolute;
+		bottom: -53px;
+		@media (min-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__footer-link {
+		@include font-inter();
+		color: #ffffff;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 12px;
+		line-height: 15px;
+		text-align: center;
+		text-decoration-line: underline;
+	}
+
+	&__rules-button {
+		background-color: $bank4;
+		display: none;
+		box-sizing: border-box;
+		position: absolute;
+		right: 0;
+		bottom: 182px;
+		width: 114px;
+		height: 78px;
+		clip-path: polygon(0% 15%, 100% 0%, 100% 100%, 0% 85%);
+
+		@media (min-width: 768px) {
+			display: block;
+		}
+
+		:hover {
+			transform: scale(1.1);
+		}
+
+		:focus-within {
+			transform: scale(1.1);
+		}
+	}
+
+	&__rules-link {
+		@include font-inter();
+		color: $bank1;
+
+		font-style: normal;
+		font-weight: 800;
+		font-size: 14px;
+		line-height: 108.52%;
+		text-align: right;
+		letter-spacing: -0.055em;
+		text-transform: uppercase;
+		outline: none;
+		text-decoration: none;
+
+		padding: 24px;
+		display: inline-flex;
+		transition-duration: 400ms;
+	}
+}
+
+.title {
+	@include font-druk();
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 100.4%;
+	text-transform: uppercase;
+	text-align: center;
+	color: #ffffff;
+	box-sizing: border-box;
+	width: 200px;
+	height: 206px;
+
+	@media (min-width: 768px) {
+		font-size: 88px;
+		width: 720px;
+		height: 176px;
+		padding: 0 20px;
+	}
+
+	@media (min-width: 1440px) {
+		font-size: 109px;
+		width: 890px;
+		height: 218px;
+	}
+
+	&_result {
+		height: 50px;
+		width: 300px;
+		margin: 0;
+		margin-top: 10px;
+		margin-bottom: 16px;
+
+		@media (min-width: 768px) {
+			height: 88px;
+			width: 384px;
+			margin-bottom: 24px;
+		}
+
+		@media (min-width: 1440px) {
+			height: 109px;
+		}
+	}
+
+	&_final {
+		cursor: pointer;
+		font-size: 34px;
+		width: 300px;
+		height: 38px;
+		@media (min-width: 768px) {
+			font-size: 60px;
+			width: 402px;
+			height: 64px;
+		}
+	}
+
+	&_result-disappear-animation {
+		animation-name: hideResultTitle;
+		animation-fill-mode: forwards;
+		animation-delay: 1200ms;
+		animation-duration: 300ms;
+	}
+}
+
+.hide {
+	animation-name: hide;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+	animation-duration: 400ms;
+}
+
+// фон и анимации
+.page__background {
+	top: 0;
+	left: 0;
+	position: absolute;
+	z-index: -2;
+}
+.background {
+	background-color: #00bef0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	&__animation-container {
+		position: absolute;
+		top: 100%;
+		left: 0;
+
+		&_horizontal {
+			background-color: #00bef0;
+			z-index: 2;
+		}
+	}
+
+	&__animation {
+		position: absolute;
+		bottom: 0;
+		transform: translateY(100%);
+		width: 100vw;
+		height: 3452px;
+		z-index: -1;
+		background-image: url($url-img + "/planes.svg");
+		background-position: center;
+		opacity: 0.3;
+
+		animation-name: flight_bcg;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+
+		animation-delay: 0s;
+		animation-duration: 30s;
+		animation-play-state: paused;
+	}
+
+	&__animation_horizontal {
+		background-color: #00bef0;
+		// transform: rotate(90deg);
+	}
+
+	&__animation_alt {
+		animation-delay: 15s;
+	}
+}
+
+// стрелка
+.arrow {
+	transition: 0.3s;
+	width: 30px;
+	height: 14px;
+	position: relative;
+
+	&::after,
+	&::before {
+		content: "";
+		background-color: #ffffff;
+		width: 22px;
+		height: 5px;
+		position: absolute;
+		display: block;
+	}
+
+	&::after {
+		transform-origin: left top;
+		left: 15px;
+		transform: rotate(20deg);
+	}
+
+	&::before {
+		transform-origin: right top;
+		right: 15px;
+		transform: rotate(-20deg);
+	}
+
+	&_still {
+		transition: 0.3s;
+	}
+
+	&_still:after,
+	&_still:before {
+		transform: rotate(0deg);
+	}
+}
+
+// лого
+.page__logo {
+	position: relative;
+	top: 29px;
+	left: 16px;
+	outline: none;
+
+	@media (min-width: 768px) {
+		top: 32px;
+		left: 24px;
+	}
+	@media (min-width: 1440px) {
+		left: 120px;
+	}
+}
+
+.logo {
+	width: 100vw;
+	height: 23px;
+
+	@media (min-width: 768px) {
+		height: 31px;
+	}
+
+	&-link {
+		cursor: pointer;
+	}
+}

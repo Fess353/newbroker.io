@@ -1,0 +1,14 @@
+  
+{
+    "name": "Открытие Брокер ",
+    "short_name": "Брокер",
+    "icons": [{
+          "src": "favicon/72.png",
+          "sizes": "72x72",
+          "type": "image/png"
+        }],
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#FF6F32",
+    "theme_color": "#00BEF0"
+  }

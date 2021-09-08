@@ -1,0 +1,32 @@
+@mixin font-druk {
+	font-family: "Druk Cyr", sans-serif;
+}
+
+@mixin font-inter {
+	font-family: "Inter", sans-serif;
+}
+
+@mixin flex() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin alt_button {
+	color: $alt-btn-color-text;
+	background-color: $alt-btn-color;
+
+	&:focus {
+		border: 4px solid $primary-btn-color-focus;
+		background-color: #ffffff;
+	}
+
+	&:disabled {
+		opacity: 40%;
+		color: $bank2;
+	}
+
+	&:hover {
+		background-color: $alt-btn-color;
+	}
+}

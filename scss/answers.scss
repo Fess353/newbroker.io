@@ -1,0 +1,122 @@
+@import "vars"; // переменные
+@import "fonts"; // Шрифты
+@import "mixin"; // миксины
+
+.page__answers {
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+.answers {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	overflow: auto;
+
+	&-appear-animation {
+		animation-name: moveAnswers;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-duration: 300ms;
+		animation-delay: 300ms;
+	}
+	&-disappear-animation {
+		animation-name: moveAwayTop;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-duration: 400ms;
+		animation-delay: 300ms;
+	}
+
+	&__container {
+		position: absolute;
+		top: 50vh;
+		box-sizing: border-box;
+		padding: 22px 16px;
+		background-color: #00bef0;
+		width: 99vw;
+
+		@media (min-width: 768px) {
+			padding: 33px 66px;
+			width: 768px;
+		}
+
+		@media (min-width: 1440px) {
+			padding: 48px 50px;
+			width: 892px;
+		}
+
+		&::before {
+			background: linear-gradient(360deg, #00bef0 0%, rgba(0, 190, 240, 0) 100%);
+			width: 100%;
+			height: 53px;
+			content: "";
+			position: absolute;
+			top: -52px;
+			left: 0;
+		}
+	}
+
+	&__arrow {
+		top: -30px;
+		left: calc(50% - 15px);
+		display: block;
+	}
+
+	&__button {
+		@include font-inter;
+		@include flex;
+		background-color: $primary-btn-color;
+		color: $primary-btn-color-text;
+		font-style: normal;
+		font-weight: 800;
+		font-size: 18px;
+		line-height: 120%;
+		text-transform: uppercase;
+		align-items: center;
+		text-align: center;
+
+		border: none;
+		opacity: 1;
+		cursor: pointer;
+		clip-path: polygon(0% 6%, 100% 0%, 100% 100%, 0% 94%);
+		z-index: 2;
+		width: 100%;
+		min-height: 120px;
+		max-height: fit-content;
+		box-sizing: border-box;
+		padding: 30px 24px;
+		margin-bottom: 4px;
+		transition-duration: 300ms;
+
+		@media (min-width: 768px) {
+			padding: 40px 40px;
+		}
+
+		@media (min-width: 1440px) {
+			padding: 40px 50px;
+		}
+
+		&:nth-child(even) {
+			clip-path: polygon(0% 0%, 100% 6%, 100% 94%, 0% 100%);
+		}
+
+		&:hover,
+		&:focus-within {
+			outline: none;
+			background-color: $primary-btn-color-hover;
+			@media (min-width: 1440px) {
+				transform: scale(1.1);
+			}
+		}
+	}
+
+	&_dissolve {
+		opacity: 0;
+	}
+}

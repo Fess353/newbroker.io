@@ -1,0 +1,24 @@
+// Общие настройки
+$font-formats: ("eot", "woff", "ttf");
+$url-img: "../img"; // Путь к изображениям
+$url-font: "../fonts"; // Путь к шрифтам
+
+// Переменные цветов
+$bank1: #00bef0;
+$bank2: #3c3c3c;
+$bank3: #000000;
+$bank4: #ffffff;
+$secondary-bcg-color: #ff6f32;
+
+$primary-btn-color: #ff6f32;
+$primary-btn-color-hover: #ff9800;
+$primary-btn-color-active: #e17a00;
+$primary-btn-color-focus: #ff6f32;
+$primary-btn-color-text: #ffffff;
+
+$alt-btn-color: #ffffff;
+$alt-btn-color-text: #ff6f32;
+$error-color: #f14336;
+
+// Импорт вспомогательных сниппетов (всегда в конце)
+@import "node_modules/sass-snippets/scss/snippets";

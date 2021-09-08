@@ -1,0 +1,60 @@
+@import "vars"; // Импорт переменных всегда первый
+@import "fonts"; // Шрифты
+@import "mixin"; // миксины
+
+.main__rotate-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+.rotate-page {
+	width: 100vw;
+	height: 100vh;
+
+	@media screen and (max-height: 400px) and (min-width: 420px) and (orientation: landscape) {
+		display: block;
+		z-index: 99999;
+	}
+
+	&__background {
+		z-index: -1;
+	}
+
+	&__question {
+		&-wrapper {
+		}
+
+		&-rotated {
+		}
+	}
+
+	&__cat {
+		position: absolute;
+		bottom: 37px;
+		right: 0;
+		width: 114px;
+		height: 139px;
+		z-index: 10;
+	}
+
+	&__phone {
+		z-index: 10;
+		position: absolute;
+		left: calc(50% - 46px);
+		bottom: 40px;
+		width: 103px;
+		height: 52px;
+
+		&-animation {
+			animation-name: rotatePhone;
+			animation-duration: 1s;
+			animation-delay: 500ms;
+			animation-fill-mode: both;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+	}
+	
+}

@@ -1,0 +1,23 @@
+@include font-face("Druk Cyr", "#{$url-font}/DrukCyr-Medium/DrukCyr-Medium", "woff") {
+	font-style: normal;
+	font-weight: 700;
+	font-display: block;
+}
+
+@include font-face("Inter", "#{$url-font}/Inter-Medium/Inter-Medium", "woff") {
+	font-weight: 500;
+	font-style: normal;
+	font-display: block;
+}
+
+@include font-face("Inter", "#{$url-font}/Inter-ExtraBold/Inter-ExtraBold", "woff") {
+	font-weight: 800;
+	font-style: normal;
+	font-display: block;
+}
+
+@include font-face("Inter", "#{$url-font}/Inter-Black/Inter-Black", "woff") {
+	font-weight: 900;
+	font-style: normal;
+	font-display: block;
+}

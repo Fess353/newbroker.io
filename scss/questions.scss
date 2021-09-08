@@ -1,0 +1,156 @@
+@import "vars"; // Импорт переменных всегда первый
+@import "fonts"; // Шрифты
+@import "mixin"; // миксины
+
+.page__question {
+	margin-left: auto;
+	margin-right: auto;
+	top: 8vh;
+	position: relative;
+	
+	@media (min-width: 768px) {
+		top: 208px;
+	}
+
+	@media (min-width: 1440px) {
+		top: 123px;
+	}
+}
+
+.question {
+	@include flex;
+	box-sizing: border-box;
+	min-height: 40px;
+	min-width: 310px;
+	opacity: 0;
+	max-width: 95vw;
+
+	@media (min-width: 768px) {
+		min-height: 200px;
+		font-size: 34px;
+		width: 720px;
+	}
+
+	@media (min-width: 1440px) {
+		width: 996px;
+	}
+
+	&__wrapper {
+		z-index: 1;
+		padding: 10px;
+		clip-path: polygon(0% 4%, 100% 0%, 98% 94%, 3% 100%);
+		background-color: $bank4;	
+		display: flex;
+		min-height: 170px;
+		max-height: auto;
+		justify-content: center; 
+		align-items: center;
+		box-sizing: border-box;
+
+		&_rotated {
+			clip-path: polygon(0% 1%, 100% 4%, 95% 99%, 5% 97%);
+		}
+
+		&_result {
+			height: 90px;
+			min-height: 80px;
+			width: 320px;
+			clip-path: polygon(0% 9%, 100% 0%, 93% 90%, 6% 100%);
+				
+			@media (min-width: 768px) {
+				width: 384px;
+				height: 100px;
+			}
+		}
+	}
+
+	
+
+	&__text {
+		@include font-druk;
+		color: $bank2;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		line-height: 100%;
+		text-transform: uppercase;
+		text-align: center;
+		padding: 30px 9px ;
+		box-sizing: border-box;
+		margin: 0;
+
+		@media (min-width: 768px) {
+			font-size: 34px;
+			padding: 32px 59px ;
+		}
+	}
+
+	&_result {
+		position: relative;
+	}
+
+	&__tail {
+		bottom: -45px;
+		right: 140px;
+		z-index: 0;
+		opacity: 1;
+		position: absolute;
+		background-image: url($url-img + "/questionTale.svg");
+		background-repeat: no-repeat;
+		width: 100px;
+		height: 60px;
+
+		@media (min-width: 768px) {
+			bottom: -40px;
+			right: 120px;
+		}
+		@media (min-width: 1440px) {
+			bottom: -35px;
+		}
+
+		&_rotated {
+			left: 140px;
+			transform: rotateY(180deg);
+			@media (min-width: 768px) {
+				left: 120px;
+			}
+		}
+
+		&-disappear-animation {
+			animation-name: hideTail;
+			animation-fill-mode: forwards;
+			animation-duration: 150ms;
+		}
+	}
+
+	&-appear-animation {
+		animation-name: showQuestion;
+		animation-fill-mode: forwards;
+		animation-duration: 300ms;
+		animation-delay: 1100ms;
+
+		&-alt {
+			animation-name: showQuestionAltXs;
+			@media (min-width: 768px) {
+				animation-name: showQuestionAltSm;
+			}
+			@media (min-width: 1440px) {
+				animation-name: showQuestionAltXl;
+			}
+		}
+	}
+
+	&-scale-animation {
+		animation-name: scaleQuestion;
+		animation-fill-mode: forwards;
+		animation-duration: 600ms;
+		animation-delay: 0;
+	}
+
+	&-disappear-animation {
+		animation-name: moveAwayTop;
+		animation-fill-mode: forwards;
+		animation-duration: 200ms;
+		animation-delay: 450ms;
+	}
+}

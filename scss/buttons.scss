@@ -1,0 +1,111 @@
+@import "vars"; // переменные
+@import "fonts"; // Шрифты
+@import "mixin"; // миксины
+
+.page__button {
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+
+	&-wrapper {
+		position: absolute;
+		bottom: 0;
+		width: 100vw;
+		height: 84px;
+		@media (min-width: 768px) {
+			height: 97px;
+		}
+	}
+	
+	&_1 {
+		transform: translateY(0);
+	}
+}
+
+.button {
+	@include font-inter;
+	@include flex;
+	color: $primary-btn-color-text;
+	background-color: $primary-btn-color;
+
+	font-style: normal;
+	font-weight: 900;
+	font-size: 24px;
+	line-height: 108.52%;
+	text-align: center;
+	letter-spacing: 0.005em;
+	text-transform: uppercase;
+
+	z-index: 1;
+	width: 100%;
+	height: 84px;
+	border: none;
+	opacity: 1;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	&:hover {
+		background-color: $primary-btn-color-hover;
+	}
+
+	&:active {
+		background-color: $primary-btn-color-active;
+	}
+
+	&:disabled {
+		color: #3c3c3c;
+	}
+
+	&:focus,
+	&:focus-within {
+		background: #ff6f32;
+		border: 4px solid #ff9800;
+		box-sizing: border-box;
+		outline: none;
+	}
+
+	@media (min-width: 768px) {
+		height: 97px;
+	}
+
+	&__text {
+		&_disabled {
+			opacity: 40%;
+			color: #3c3c3c;
+		}
+	}
+
+	&-appear-animation {
+		animation-name: showButton;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-duration: 300ms;
+		animation-delay: 1500ms;
+	}
+
+	&-disappear-animation {
+		animation-name: hideButton;
+		animation-fill-mode: forwards;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+		animation-direction: normal;
+		animation-duration: 400ms;
+	}
+}
+
+.button_alt {
+	background-color: #ffffff;
+	color: $alt-btn-color-text;
+
+	&:hover {
+		background-color: #ffffff;
+		color: $primary-btn-color-active;
+	}
+
+	&:focus {
+		background-color: #ffffff;
+		color: $primary-btn-color-active;
+	}
+}
