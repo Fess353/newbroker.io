@@ -79,6 +79,7 @@ function loadNextPage(num) {
 			showAnswers(pageCounter);
 		}, 400);
 	} else {
+		// eslint-disable-next-line no-use-before-define
 		loadResultPage();
 	}
 }
@@ -263,40 +264,28 @@ emailInput.addEventListener('blur', validate);
 
 // инпут, смена класса для ховера
 let checkbox = document.querySelector('.final-block__checkbox-input');
-checkbox.addEventListener('change', function () {
-	let finalButtonLoc = document.querySelector('.final-block__button');
+
+function showHover () {
 	document
 		.querySelector('.final-block__checkbox-label')
 		.classList.toggle('none');
 	document
 		.querySelector('.button__text')
 		.classList.toggle('button__text_disabled');
-	if ((finalButton.disabled = false)) {
-		finalButtonLoc.disabled = true;
+	if (!finalButton.disabled) {
+		finalButton.disabled = true;
 	} else {
-		finalButtonLoc.disabled = false;
+		finalButton.disabled = false;
 	}
-});
+}
+checkbox.addEventListener('change', showHover);
 
 // тестовая проверка попапа - подписка на акцию
 let emailTestSet = new Set();
 emailTestSet.add('test@mail.ru');
 emailTestSet.add('test2@gmail.com');
-
-function testFunc() {
-	// let url = '';
-	// let mail = $('.final-block__email-input').val().toString().toLowerCase();
-	// let response = await fetch(url, {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json;charset=utf-8'
-	// 	},
-	// 	body: JSON.stringify(mail)
-	// });
-	// let result = await response.json();
-
+function showPopup() {
 	popup.classList.add('popup_visible');
-
 	let e = $('.final-block__email-input').val().toString().toLowerCase();
 	if (!emailTestSet.has(e)) {
 		emailTestSet.add(e);
@@ -308,5 +297,21 @@ function testFunc() {
 	}
 }
 
-finalButton.addEventListener('click', testFunc);
+function testRegister() {
+	if (!finalButton.disabled && validateEmail()) {
+	// let url = '';
+		// let mail = $('.final-block__email-input').val().toString().toLowerCase();
+		// let response = await fetch(url, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json;charset=utf-8'
+		// 	},
+		// 	body: JSON.stringify(mail)
+		// });
+		// let result = await response.json();
+		showPopup();
+	}
+}
+
+finalButton.addEventListener('click', testRegister);
 // конец тестового блока
